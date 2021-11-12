@@ -460,12 +460,15 @@ $ cat /run/secrets/example-key
 example-value
 ```
 
-`/run/secrets` is a symlink to `/etc/secret.d/1`:
+`/run/secrets` is a symlink to `/run/secrets.d/1`:
 
 ```console
 $ ls -la /run/secrets
 lrwxrwxrwx 16 root 12 Jul  6:23  /run/secrets -> /run/secrets.d/1
 ```
+
+Note that `/run/secrets.d` is mounted read-only and will only be remounted for read-write
+access while a new generation of secrets is being deployed.
 
 ## Set secret permission/owner and allow services to access it
 
